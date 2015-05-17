@@ -1,68 +1,50 @@
-Readme file for run_analysis.R
-==============================
+Code Book for UCI HAR Dataset
+=============================
 
-Code Description
-----------------
+ a code book that describes the variables, the data, and any transformations or work that you performed to clean up the data called CodeBook.md
 
-The run_analysis.R script reads the various files that are part of the 
-UCI HAR Dataset. The Dataset folder must be in the current working directory.
-The aforementioned script reads the various files and
+For use with run_analysis.R
+---------------------------
 
-1. Merges the test and training data into a single dataset
-2. Extracts the mean and standard deviation measurements
-3. Uses descriptive activity names
-4. labels the variables(columns) of the dataset with appropriate names
+This file contains the descriptions of the columns/variables/measurements
+in the tidy dataset created from the UCI HAR "raw" data and tidied up
+via the run_analysis.R script.
 
-Specifically, the more detailed steps followed are:
-
-1. Load required R libraries
-2. Setup variables to store the folder and file names to ease data loading
-3. Load in the data from the test data folder
-4. Load in the data from the training data folder
-5. Load the files containing the feature and activity labels
-6. Using the feature labels, name the columns in the feature tables (x_test)
-7. Name the column in the subject_test table (subject_id)
-8. Name the column in the y_test table (activity_id)
-9. Glue/bind the test data (left-to-right)
-10. Glue/bind the training data (left-to-right)
-11. Glue/bind the test and training data (top/bottom)
-12. Determine which columns/measurements to keep (mean and std)
-13. Extract the kept columns from the large data table
-14. Merge/Join the activity_name data into the kept data table
-15. Rearrange the columns for clarity, "key/id" columns on the left.
-16. Relabel the measurement columns for ease of use with dplyr, tidyr, etc.
+Columns (Variables/Measurements)
+--------------------------------
 
 
 
-Rationale
----------
 
-A relatively _wide_ format was chosen for this dataset to keep each 
-_subject-activity-attempt_ on a single row. (It is possible to _factor_
-out the 66 measurement columns so that there would be a single measurement 
-column and an additional _key_ column - measurement-name) The wide vs. 
-narrow decision can be made depending on what analysis is desired.
+For each record it is provided:
+======================================
 
-Variable Description
---------------------
+- Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
+- Triaxial Angular velocity from the gyroscope. 
+- A 561-feature vector with time and frequency domain variables. 
+- Its activity label. 
+- An identifier of the subject who carried out the experiment.
 
-There are 69 variables in the dataset. 
 
-The first three columns are the "key" columns providing the 
-subject_id, activity_id, and activity_name. 
+For more information about this dataset contact: activityrecognition@smartlab.ws
 
-activity_id and activity_name are a one-to-one lookup and would be considered 
-redundant. Both are included to facilitate further analysis.
 
-The next 33 columns are the "mean" measurements. 
+### Rows
 
-The last 33 columns are the "std" (standard deviation) measurements.
+Each row is one attempt, for one subject, for one 
+activity -- a _subject-activity-attempt_.
 
-### Specifically, in order, the variables (columns) in the dataset are:
+### "Key" columns
 
 subject_id  
 activity_id  
 activity_name  
+
+### "Mean" columns
+
+These columns contain the *mean* of each parameter-measurement for each
+_subject-activity-attempt_.
+
 tBodyAcc_mean_X  
 tBodyAcc_mean_Y  
 tBodyAcc_mean_Z  
@@ -96,6 +78,12 @@ fBodyAccMag_mean
 fBodyBodyAccJerkMag_mean  
 fBodyBodyGyroMag_mean  
 fBodyBodyGyroJerkMag_mean  
+
+### "std" columns
+
+These columns contain the *standard deviation* of each parameter-measurement
+for each  _subject-activity-attempt_.
+
 tBodyAcc_std_X  
 tBodyAcc_std_Y  
 tBodyAcc_std_Z  
