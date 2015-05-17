@@ -1,0 +1,95 @@
+Readme file for run_analysis.R
+==============================
+
+Description
+-----------
+
+The run_analysis.R script reads the various files that are part of the 
+UCI HAR Dataset. The Dataset folder must be in the current working directory.
+The aforementioned script reads the various files and
+
+1. Merges the test and training data into a single dataset
+2. Extracts the mean and standard deviation measurements
+3. Uses descriptive activity names
+4. labels the variables(columns) of the dataset with appropriate names
+
+There are 69 variables in the dataset. The first three columns are the "key"
+columns providing the subject_id, activity_id, and activity_name. activity_id
+and activity_name are a one-to-one lookup and would be considered redundant.
+Both are included to facilitate further analysis.
+
+The next 33 columns are the "mean" measurements. 
+
+The last 33 columns are the "std" (standard deviation) measurements.
+
+### Specifically, in order, the variables (columns) in the dataset are:
+
+subject-id  
+activity-id  
+activity-name  
+tBodyAcc-mean()-X  
+tBodyAcc-mean()-Y  
+tBodyAcc-mean()-Z  
+tGravityAcc-mean()-X  
+tGravityAcc-mean()-Y  
+tGravityAcc-mean()-Z  
+tBodyAccJerk-mean()-X  
+tBodyAccJerk-mean()-Y  
+tBodyAccJerk-mean()-Z  
+tBodyGyro-mean()-X  
+tBodyGyro-mean()-Y  
+tBodyGyro-mean()-Z  
+tBodyGyroJerk-mean()-X  
+tBodyGyroJerk-mean()-Y  
+tBodyGyroJerk-mean()-Z  
+tBodyAccMag-mean()  
+tGravityAccMag-mean()  
+tBodyAccJerkMag-mean()  
+tBodyGyroMag-mean()  
+tBodyGyroJerkMag-mean()  
+fBodyAcc-mean()-X  
+fBodyAcc-mean()-Y  
+fBodyAcc-mean()-Z  
+fBodyAccJerk-mean()-X  
+fBodyAccJerk-mean()-Y  
+fBodyAccJerk-mean()-Z  
+fBodyGyro-mean()-X  
+fBodyGyro-mean()-Y  
+fBodyGyro-mean()-Z  
+fBodyAccMag-mean()  
+fBodyBodyAccJerkMag-mean()  
+fBodyBodyGyroMag-mean()  
+fBodyBodyGyroJerkMag-mean()  
+tBodyAcc-std()-X  
+tBodyAcc-std()-Y  
+tBodyAcc-std()-Z  
+tGravityAcc-std()-X  
+tGravityAcc-std()-Y  
+tGravityAcc-std()-Z  
+tBodyAccJerk-std()-X  
+tBodyAccJerk-std()-Y  
+tBodyAccJerk-std()-Z  
+tBodyGyro-std()-X  
+tBodyGyro-std()-Y  
+tBodyGyro-std()-Z  
+tBodyGyroJerk-std()-X  
+tBodyGyroJerk-std()-Y  
+tBodyGyroJerk-std()-Z  
+tBodyAccMag-std()  
+tGravityAccMag-std()  
+tBodyAccJerkMag-std()  
+tBodyGyroMag-std()  
+tBodyGyroJerkMag-std()  
+fBodyAcc-std()-X  
+fBodyAcc-std()-Y  
+fBodyAcc-std()-Z  
+fBodyAccJerk-std()-X  
+fBodyAccJerk-std()-Y  
+fBodyAccJerk-std()-Z  
+fBodyGyro-std()-X  
+fBodyGyro-std()-Y  
+fBodyGyro-std()-Z  
+fBodyAccMag-std()  
+fBodyBodyAccJerkMag-std()  
+fBodyBodyGyroMag-std()  
+fBodyBodyGyroJerkMag-std()  
