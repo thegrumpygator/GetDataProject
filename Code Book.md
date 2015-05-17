@@ -22,7 +22,8 @@ activity -- a _subject-activity-attempt_.
 
 ### "Mean" columns
 
-These columns contain the *mean* of each _subject-activity-attempt_.
+These columns contain the *mean* of each parameter-measurement for each
+_subject-activity-attempt_.
 
 tBodyAcc_mean_X  
 tBodyAcc_mean_Y  
@@ -60,7 +61,8 @@ fBodyBodyGyroJerkMag_mean
 
 ### "std" columns
 
-These columns contain the *standard deviation* of each _subject-activity-attempt_.
+These columns contain the *standard deviation* of each parameter-measurement
+for each  _subject-activity-attempt_.
 
 tBodyAcc_std_X  
 tBodyAcc_std_Y  
