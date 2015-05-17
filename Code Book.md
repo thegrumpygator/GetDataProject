@@ -1,19 +1,29 @@
-Code Book for UCI HID Dataset
+Code Book for UCI HAR Dataset
 =============================
 
 For use with run_analysis.R
 ---------------------------
 
 This file contains the descriptions of the columns/variables/measurements
-in the tidy dataset created from the UCI HID "raw" data and tidied up
+in the tidy dataset created from the UCI HAR "raw" data and tidied up
 via the run_analysis.R script.
 
 Columns (Variables/Measurements)
 --------------------------------
 
+### "Key" columns
 subject_id  
 activity_id  
 activity_name  
+
+### Rows
+Each row is one attempt, for one subject, for one 
+activity -- a _subject-activity-attempt_.
+
+### "Mean" columns
+
+These columns contain the *mean* of each _subject-activity-attempt_.
+
 tBodyAcc_mean_X  
 tBodyAcc_mean_Y  
 tBodyAcc_mean_Z  
@@ -47,6 +57,11 @@ fBodyAccMag_mean
 fBodyBodyAccJerkMag_mean  
 fBodyBodyGyroMag_mean  
 fBodyBodyGyroJerkMag_mean  
+
+### "std" columns
+
+These columns contain the *standard deviation* of each _subject-activity-attempt_.
+
 tBodyAcc_std_X  
 tBodyAcc_std_Y  
 tBodyAcc_std_Z  

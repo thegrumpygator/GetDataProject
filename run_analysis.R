@@ -8,6 +8,7 @@
 # From the data set in step 4, creates a second, independent tidy data set with
 # the average of each VARIABLE for each ACTIVITY and each SUBJECT.
 library(data.table)
+library(dplyr)
 DataFolder <- "UCI HAR Dataset/"
 TestDataFolder <- paste(DataFolder, "test/", sep="")
 TrainDataFolder <- paste(DataFolder, "train/", sep="")
@@ -83,16 +84,7 @@ dt.data <- select(dt.data, 2, 1, 69, 3:68)
 setnames(dt.data, gsub("-","_",names(dt.data)))
 setnames(dt.data, gsub("\\(\\)","",names(dt.data)))
 
+############----->>>>> Tidy Data Complete! [dt.data]
 
 # compute the summary as requested...
 dt.summary <- dt.data %>% group_by(subject_id, activity_name) %>% summarise_each(funs(mean))
-
-
-
-
-
-     ## this code creates a vector of feature labels that contain mean() in the name
-     ## feature.labels[grepl("mean\\(", feature.labels[,2]),]
-
-     ## this code creates a vector of feature labels that contain std() in the name
-     ## feature.labels[grepl("std\\(", feature.labels[,2]),]
