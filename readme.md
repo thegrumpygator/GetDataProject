@@ -1,8 +1,8 @@
 Readme file for run_analysis.R
 ==============================
 
-Description
------------
+Code Description
+----------------
 
 The run_analysis.R script reads the various files that are part of the 
 UCI HAR Dataset. The Dataset folder must be in the current working directory.
@@ -13,6 +13,17 @@ The aforementioned script reads the various files and
 3. Uses descriptive activity names
 4. labels the variables(columns) of the dataset with appropriate names
 
+Rationale
+---------
+
+A relatively _wide_ format was chosen for this dataset to keep each 
+_subject-activity-attempt_ on a single row. (It is possible to _factor_
+out the 66 measurement columns so that there would be a single measurement 
+column and an additional _key_ column - measurement-name) The wide vs. 
+narrow decision can be made depending on what analysis is desired.
+
+Variable Description
+--------------------
 There are 69 variables in the dataset. The first three columns are the "key"
 columns providing the subject_id, activity_id, and activity_name. activity_id
 and activity_name are a one-to-one lookup and would be considered redundant.

@@ -11,14 +11,16 @@ via the run_analysis.R script.
 Columns (Variables/Measurements)
 --------------------------------
 
+### Rows
+
+Each row is one attempt, for one subject, for one 
+activity -- a _subject-activity-attempt_.
+
 ### "Key" columns
+
 subject_id  
 activity_id  
 activity_name  
-
-### Rows
-Each row is one attempt, for one subject, for one 
-activity -- a _subject-activity-attempt_.
 
 ### "Mean" columns
 
