@@ -4,7 +4,11 @@ Readme file for run_analysis.R
 Code Description
 ----------------
 
-install packages: data.table, dplyr
+### Prerequisites
+UCU HAR data must be in the working directory. 
+The following packages must be installed:
+* data.table
+* dplyr
 
 The run_analysis.R script reads the various files that are part of the 
 UCI HAR Dataset. The Dataset folder must be in the current working directory.
