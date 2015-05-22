@@ -85,7 +85,7 @@ setnames(dt.data, gsub("-","_",names(dt.data)))
 setnames(dt.data, gsub("\\(\\)","",names(dt.data)))
 
 ############----->>>>> FULL Tidy Data Complete! [dt.data]
-write.table(dt.data, file = "UCIHAR-mean-std-subject-activity-attempt.txt", row.name=FALSE)
+##   write.table(dt.data, file = "UCIHAR-mean-std-subject-activity-attempt.txt", row.name=FALSE)
 
 # compute the summary as requested...
 dt.summary <- dt.data %>% group_by(subject_id, activity_name) %>% summarise_each(funs(mean))
@@ -96,4 +96,5 @@ setnames(dt.data, gsub("_", "", names(dt.data)))
 #recompute summary without the activityid column included.
 dt.summary <- dt.data %>% group_by(subjectid, activityname) %>% summarise_each(funs(mean), -activityid)
 
-write.table(dt.summary, file = "UCIHAR-mean-std-subject-activity-attempt-SUMMARY.txt", row.name=FALSE)
+##write.table(dt.summary, file = "UCIHAR-mean-std-subject-activity-attempt-SUMMARY.txt", row.name=FALSE)
+dt.summary
