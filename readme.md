@@ -10,6 +10,7 @@ The following packages must be installed:
 * data.table
 * dplyr
 
+
 The run_analysis.R script reads the various files that are part of the 
 UCI HAR Dataset. The Dataset folder must be in the current working directory.
 The aforementioned script reads the various files and
