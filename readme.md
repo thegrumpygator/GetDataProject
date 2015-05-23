@@ -7,6 +7,13 @@ accelerometer data) and combines them into several tidy datasets - one
 of which is output to the console. The others datasets and several other
 variables remain in the workspace environment.
 
+### Rationale
+A relatively _wide_ format was chosen for this dataset to keep each 
+_subject-activity-attempt_ on a single row. (It is possible to _factor_
+out the 66 measurement columns so that there would be a single measurement 
+column and an additional _key_ column - measurement-name) The wide vs. 
+narrow decision can be made depending on what analysis is desired.
+
 If the user wishes the script to write to disk the tidy dataset, the user
 must only uncomment the appropriate "write.table" statement. The statement 
 writes the dataset as space-delimited, with headers, and no row labels. 
@@ -17,7 +24,6 @@ following statment should be run from the R console:
 `dt.summary <- read.table("filename.txt", header=TRUE)`
 
 ### Repo Contents
-
 This repo contains:
 * Readme.rm - this file
 * Codebook.rm - file describing the contents of the dataset
@@ -36,14 +42,9 @@ The following R packages must be installed (they are loaded in the script):
 * dplyr
 
 ### Code Description
-
 The run_analysis.R script reads the various files that are part of the 
 UCI HAR Dataset. As mentioned in the prerequisites, the raw Dataset folder
 must be in the current working directory.
-
-1.  Red
-2.  Green
-3.  Blue
 
 At a macro-level, the aforementioned script reads the various files and
 performs the following steps:  
@@ -76,17 +77,7 @@ Specifically, the detailed steps are:
 19.  Include lines to write output files for the various tidy datasets (currently commented out).  
 20.  Print the tidy means dataset to the console  
 
-Rationale
----------
-
-A relatively _wide_ format was chosen for this dataset to keep each 
-_subject-activity-attempt_ on a single row. (It is possible to _factor_
-out the 66 measurement columns so that there would be a single measurement 
-column and an additional _key_ column - measurement-name) The wide vs. 
-narrow decision can be made depending on what analysis is desired.
-
-Variable Description
---------------------
+### Variables Descriptions
 Upon successful completion of running the script, the workspace will contain
 the following variables:
 * activity.labels - lookup table used to merge with the data to create activity names based on activity ID
