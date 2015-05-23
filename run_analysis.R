@@ -1,15 +1,21 @@
 # run_analysis.R that does the following.
 # 
 # 1) Merges the training and the test sets to create one data set. 
-# 2) Extracts only the measurements on the mean and standard deviation for each measurement. 
+# 2) Extracts only the measurements on the mean and standard deviation for each 
+#    measurement. 
 # 3) Uses descriptive activity names to name the activities in the data set 
 # 4) Appropriately labels the data set with descriptive variable names.
 # 
 # From the data set in step 4, creates a second, independent tidy data set with
 # the average of each VARIABLE for each ACTIVITY and each SUBJECT.
+
+## set up depentent libraries
 library(data.table)
 library(dplyr)
-DataFolder <- "UCI HAR Dataset/"
+
+## Set up data folder locations
+##
+DataFolder <- "UCI HAR Dataset/"        ## EDIT THIS FOR A DIFFERENT LOCATION!!!
 TestDataFolder <- paste(DataFolder, "test/", sep="")
 TrainDataFolder <- paste(DataFolder, "train/", sep="")
 
@@ -51,18 +57,37 @@ names(train.y_test) <- "activity-id"
 # subject_id, test_id, measurements
 test <- cbind(test.subject_test, test.y_test, test.x_test)
 
+# Clean up previous parts
+rm(test.subject_test)
+rm(test.y_test)
+rm(test.x_test)
+
 # repeat for training data
 train <- cbind(train.subject_test, train.y_test, train.x_test)
+
+# Clean up previous parts
+rm(train.subject_test)
+rm(train.y_test)
+rm(train.x_test)
 
 # merge the test and training data together (glue top to bottom)
 testAndTrain <- rbind(test, train)
 
+# Clean up previous parts
+rm(test)
+rm(train)
+
 # set up mean ["mean("] and standard deviation ["std("] columns to select
 mean_labels <- feature.labels[grepl("mean\\(", feature.labels[,2]),]
 std_labels <- feature.labels[grepl("std\\(", feature.labels[,2]),]
+feature.labels <- feature.labels[,1]
 
 # combine the key columns with the mean and std columns labels 
 col_labels <- rbind("subject-id", "activity-id", mean_labels[2], std_labels[2])
+
+# Clean up previous parts
+rm(mean_labels)
+rm(std_labels)
 
 # fix the storage of this vector
 col_labels <- col_labels[,1]
@@ -97,5 +122,5 @@ setnames(dt.data, gsub("_", "", names(dt.data)))
 dt.summary <- dt.data %>% group_by(subjectid, activityname) %>% summarise_each(funs(mean), -activityid)
 
 
-write.table(dt.summary, file = "UCIHAR-mean-std-subject-activity-attempt-SUMMARY.txt", row.name=FALSE)
-dt.summary
+write.table(dt.summary, file = "UCIHAR-mean-std-subject-activity-attempt-FEATUREMEANS.txt", row.name=FALSE)
+print(dt.summary)

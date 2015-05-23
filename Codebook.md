@@ -38,9 +38,8 @@ activity -- a _subject-activity-attempt_.
 
 ### "Key" columns
 
-subject_id  
-activity_id  
-activity_name  
+subjectid  
+activityname  
 
 ### "Mean" columns
 
