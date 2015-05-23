@@ -14,6 +14,7 @@ out the 66 measurement columns so that there would be a single measurement
 column and an additional _key_ column - measurement-name) The wide vs. 
 narrow decision can be made depending on what analysis is desired.
 
+### Usage
 If the user wishes the script to write to disk the tidy dataset, the user
 must only uncomment the appropriate "write.table" statement. The statement 
 writes the dataset as space-delimited, with headers, and no row labels. 
