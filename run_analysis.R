@@ -97,5 +97,5 @@ setnames(dt.data, gsub("_", "", names(dt.data)))
 dt.summary <- dt.data %>% group_by(subjectid, activityname) %>% summarise_each(funs(mean), -activityid)
 
 
-##write.table(dt.summary, file = "UCIHAR-mean-std-subject-activity-attempt-SUMMARY.txt", row.name=FALSE)
+write.table(dt.summary, file = "UCIHAR-mean-std-subject-activity-attempt-SUMMARY.txt", row.name=FALSE)
 dt.summary
