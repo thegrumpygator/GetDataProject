@@ -14,17 +14,18 @@ writes the dataset as space-delimited, with headers, and no row labels.
 If the user would like to read the tidy means data file from disk, the
 following statment should be run from the R console:
 
-`dt.summary <- read.table("UCIHAR-mean-std-subject-activity-attempt-FEATUREMEANS.txt", header=TRUE)`
+`dt.summary <- read.table("filename.txt", header=TRUE)`
 
 ### Repo Contents
 
-This repo contains
+This repo contains:
 * Readme.rm - this file
 * Codebook.rm - file describing the contents of the dataset
 * run_analysis.R - script to read and process the raw data into a tidy dataset
 
 ### Prerequisites
-The UCI HAR data must be in the working directory. 
+The UCI HAR data must be in the working directory. It can be obtained from
+`https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip`
 
 This script was developed in R v3.1.3 64-bit for MS Windows.
 
