@@ -41,36 +41,40 @@ The run_analysis.R script reads the various files that are part of the
 UCI HAR Dataset. As mentioned in the prerequisites, the raw Dataset folder
 must be in the current working directory.
 
+1.  Red
+2.  Green
+3.  Blue
+
 At a macro-level, the aforementioned script reads the various files and
 performs the following steps:  
 
-1.  Merges the test and training data into a single dataset
-2.  Extracts the mean and standard deviation measurements
-3.  Includes descriptive activity names
-4.  labels the variables(columns) of the dataset with appropriate names
+1.  Merges the test and training data into a single dataset  
+2.  Extracts the mean and standard deviation measurements  
+3.  Includes descriptive activity names  
+4.  labels the variables(columns) of the dataset with appropriate names  
 
 Specifically, the detailed steps are:  
 
-1.  Load required R libraries
-2.  Setup variables to store the folder and file names to ease data loading
-3.  Load in the data from the test data folder
-4.  Load in the data from the training data folder
-5.  Load the files containing the feature and activity labels
-6.  Using the feature labels, name the columns in the feature tables (x_test)
-7.  Name the column in the subject_test table (subject_id)
-8.  Name the column in the y_test table (activity_id)
-9.  Glue/bind the test data (left-to-right)
-10.  Glue/bind the training data (left-to-right)
-11.  Glue/bind the test and training data (top/bottom)
-12.  Determine which columns/measurements to keep (mean and std)
-13.  Extract the kept columns from the large data table
-14.  Merge/Join the activity_name data into the kept data table
-15.  Rearrange the columns for clarity, "key/id" columns on the left.
-16.  Relabel the measurement columns for ease of use with dplyr, tidyr, etc.
-17.  Clean up several redundant intermediate variables
-18.  Compute the tidy means dataset
-19.  Include lines to write output files for the various tidy datasets (currently commented out).
-20.  Print the tidy means dataset to the console
+1.  Load required R libraries  
+2.  Setup variables to store the folder and file names to ease data loading  
+3.  Load in the data from the test data folder  
+4.  Load in the data from the training data folder  
+5.  Load the files containing the feature and activity labels  
+6.  Using the feature labels, name the columns in the feature tables (x_test)  
+7.  Name the column in the subject_test table (subject_id)  
+8.  Name the column in the y_test table (activity_id)  
+9.  Glue/bind the test data (left-to-right)  
+10.  Glue/bind the training data (left-to-right)  
+11.  Glue/bind the test and training data (top/bottom)  
+12.  Determine which columns/measurements to keep (mean and std)  
+13.  Extract the kept columns from the large data table  
+14.  Merge/Join the activity_name data into the kept data table  
+15.  Rearrange the columns for clarity, "key/id" columns on the left.  
+16.  Relabel the measurement columns for ease of use with dplyr, tidyr, etc.  
+17.  Clean up several redundant intermediate variables  
+18.  Compute the tidy means dataset  
+19.  Include lines to write output files for the various tidy datasets (currently commented out).  
+20.  Print the tidy means dataset to the console  
 
 Rationale
 ---------
