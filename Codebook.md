@@ -7,29 +7,33 @@ variables, data, and transformations performed to clean the data.
 For use with run_analysis.R
 ---------------------------
 
-This file contains the descriptions of the columns/variables/measurements
+This codebook contains the descriptions of the columns/variables/measurements
 in the tidy dataset created from the UCI HAR "raw" data and tidied up
 via the run_analysis.R script. run_analysis.R will "print" the means
 dataset to the console when run is complete. 
 
-Several other variables will remain in the workspace environment. They are also
-documented here.
+Several other variables will remain in the workspace environment upon completion. 
+They are also documented here.
 
 Tidy "Means" Dataset (data.table)
-====================
-
-For each record it is provided:
--------------------------------
-
-- An identifier of the subject who carried out the experiment.
-- Its activity label. 
-- Subject-Activity-Mean Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
-- Subject-Activity-Mean Triaxial Angular velocity from the gyroscope. 
+====
+_data.table_ named dt.summary containing the tidy means dataset as documented
+below. The dataset contains the means computed for each subject-activity-attempt
+of the mean and standard deviation measurements. The means are computed from the 
+combination of the test and training datasets. The table also includes columns
+for the subject ID and descriptive activity names prepended to the left-most
+columns. 
 
 ### Rows
 
 Each row is a summary (mean) for one attempt, for one subject, for one 
 activity - a _subject-activity-attempt_.
+
+For each row/record it is provided:
+- An identifier of the subject who carried out the experiment.
+- Its activity label. 
+- Subject-Activity-Mean Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
+- Subject-Activity-Mean Triaxial Angular velocity from the gyroscope. 
 
 ### "Key" columns
 
@@ -118,12 +122,16 @@ columns containing the mean and standard deviations of the measurements.
 Tidy TestAndTrain Dataset
 ====
 _data.table_ named "testAndTrain" containing the combination of the test
-dataset and the training dataset
+dataset and the training dataset. This dataset contains all measurements from
+the test dataset and the training dataset plus columns for the subject ID,
+the activity ID, and a descriptive activity name. 
 
 Tidy Mean and Standard Deviation Subset Dataset
 ====
 _data.table_ named "dt.data" containing only the columns from the 
-testAndTrain dataset 
+testAndTrain dataset. This dataset contains all the same rows as the above
+testAndTrain dataset but only the mean and standard deviation columns plus the 
+key columns for the subject ID, activity ID, and activity name. 
 
 Activity Labels
 ====
