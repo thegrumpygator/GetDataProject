@@ -43,12 +43,14 @@ must be in the current working directory.
 
 At a macro-level, the aforementioned script reads the various files and
 performs the following steps:  
+
 1.  Merges the test and training data into a single dataset
 2.  Extracts the mean and standard deviation measurements
 3.  Includes descriptive activity names
 4.  labels the variables(columns) of the dataset with appropriate names
 
 Specifically, the detailed steps are:  
+
 1.  Load required R libraries
 2.  Setup variables to store the folder and file names to ease data loading
 3.  Load in the data from the test data folder
