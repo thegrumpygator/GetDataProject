@@ -1,3 +1,12 @@
+---
+title: "Codebook for UCI HAR Tidy Data"
+author: "Brian"
+date: "23 May 2015"
+output:
+  html_document:
+    keep_md: yes
+---
+
 Code Book for UCI HAR Dataset
 =============================
 Specifically, this is the codebook for the tidy means of the mean and standard 
