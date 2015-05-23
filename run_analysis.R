@@ -80,7 +80,7 @@ rm(train)
 # set up mean ["mean("] and standard deviation ["std("] columns to select
 mean_labels <- feature.labels[grepl("mean\\(", feature.labels[,2]),]
 std_labels <- feature.labels[grepl("std\\(", feature.labels[,2]),]
-feature.labels <- feature.labels[,1]
+feature.labels <- feature.labels[,2]
 
 # combine the key columns with the mean and std columns labels 
 col_labels <- rbind("subject-id", "activity-id", mean_labels[2], std_labels[2])
