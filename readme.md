@@ -1,27 +1,50 @@
 Readme file for run_analysis.R
 ==============================
+The run_analysis.R script is designed to pre-process the UCI HAR dataset
+measuring smartphone accelerometer data collected during a controlled study. 
+The script reads in all the required files (currently ignornig the raw
+accelerometer data) and combines them into several tidy datasets - one
+of which is output to the console. The others datasets and several other
+variables remain in the workspace environment.
 
-Code Description
-----------------
+If the user wishes the script to write to disk the tidy dataset, the user
+must only uncomment the appropriate "write.table" statement. The statement 
+writes the dataset as space-delimited, with headers, and no row labels. 
+
+If the user would like to read the tidy means data file from disk, the
+following statment should be run from the R console:
+
+`dt.summary <- read.table("UCIHAR-mean-std-subject-activity-attempt-FEATUREMEANS.txt", header=TRUE)`
+
+### Repo Contents
+
+This repo contains
+* Readme.rm - this file
+* Codebook.rm - file describing the contents of the dataset
+* run_analysis.R - script to read and process the raw data into a tidy dataset
 
 ### Prerequisites
-UCU HAR data must be in the working directory. 
-The following packages must be installed:
+The UCI HAR data must be in the working directory. 
+
+This script was developed in R v3.1.3 64-bit for MS Windows.
+
+The following R packages must be installed (they are loaded in the script):
 * data.table
 * dplyr
 
+### Code Description
 
 The run_analysis.R script reads the various files that are part of the 
 UCI HAR Dataset. The Dataset folder must be in the current working directory.
-The aforementioned script reads the various files and
 
+At a macro-level, the aforementioned script reads the various files and
+performs the following steps:
 1. Merges the test and training data into a single dataset
 2. Extracts the mean and standard deviation measurements
-3. Uses descriptive activity names
+3. Includes descriptive activity names
 4. labels the variables(columns) of the dataset with appropriate names
 
-Specifically, the more detailed steps followed are:
-
+Specifically, the detailed steps are:
 1. Load required R libraries
 2. Setup variables to store the folder and file names to ease data loading
 3. Load in the data from the test data folder
@@ -38,8 +61,10 @@ Specifically, the more detailed steps followed are:
 14. Merge/Join the activity_name data into the kept data table
 15. Rearrange the columns for clarity, "key/id" columns on the left.
 16. Relabel the measurement columns for ease of use with dplyr, tidyr, etc.
-
-
+17. Clean up several redundant intermediate variables
+18. Compute the tidy means dataset
+19. Include lines to write output files for the various tidy datasets (currently commented out).
+20. Print the tidy means dataset to the console
 
 Rationale
 ---------
@@ -52,98 +77,28 @@ narrow decision can be made depending on what analysis is desired.
 
 Variable Description
 --------------------
+Upon successful completion of running the script, the workspace will contain
+the following variables:
+* activity.labels - lookup table used to merge with the data to create activity names based on activity ID
+* dt.data - tidy data.table object containing the mean and standard deviation measurements of the full test and training dataset. One row per subject-activity-attempt. One row per subject-activity.
+* dt.summary - tidy data.table object containing the means of the subject-activity-attempts on a subject-activity basis.
+* testAndTrain - tidy data.frame object containing the full test and training datasets with all measurements included. One row per subject-activity-attempt.
+* DataFolder - character object containing the path to the raw UCI HAR data
+* TestDataFolder - character object containing the path to the test data folder of the raw UCI HAR data
+* TrainDataFolder - character object containing the path to the training data folder of the raw UCI HAR data
+* col_labels - character vector object containing the original labels for the mean/std columns from the UCI HAR data
+* feature.labels - character vector object containing the original labels for all measurements in the UCI HAR data
 
-There are 69 variables in the dataset. 
-
-The first three columns are the "key" columns providing the 
-subject_id, activity_id, and activity_name. 
-
-activity_id and activity_name are a one-to-one lookup and would be considered 
-redundant. Both are included to facilitate further analysis.
-
-The next 33 columns are the "mean" measurements. 
-
-The last 33 columns are the "std" (standard deviation) measurements.
-
-### Specifically, in order, the variables (columns) in the dataset are:
-
-subject_id  
-activity_id  
-activity_name  
-tBodyAcc_mean_X  
-tBodyAcc_mean_Y  
-tBodyAcc_mean_Z  
-tGravityAcc_mean_X  
-tGravityAcc_mean_Y  
-tGravityAcc_mean_Z  
-tBodyAccJerk_mean_X  
-tBodyAccJerk_mean_Y  
-tBodyAccJerk_mean_Z  
-tBodyGyro_mean_X  
-tBodyGyro_mean_Y  
-tBodyGyro_mean_Z  
-tBodyGyroJerk_mean_X  
-tBodyGyroJerk_mean_Y  
-tBodyGyroJerk_mean_Z  
-tBodyAccMag_mean  
-tGravityAccMag_mean  
-tBodyAccJerkMag_mean  
-tBodyGyroMag_mean  
-tBodyGyroJerkMag_mean  
-fBodyAcc_mean_X  
-fBodyAcc_mean_Y  
-fBodyAcc_mean_Z  
-fBodyAccJerk_mean_X  
-fBodyAccJerk_mean_Y  
-fBodyAccJerk_mean_Z  
-fBodyGyro_mean_X  
-fBodyGyro_mean_Y  
-fBodyGyro_mean_Z  
-fBodyAccMag_mean  
-fBodyBodyAccJerkMag_mean  
-fBodyBodyGyroMag_mean  
-fBodyBodyGyroJerkMag_mean  
-tBodyAcc_std_X  
-tBodyAcc_std_Y  
-tBodyAcc_std_Z  
-tGravityAcc_std_X  
-tGravityAcc_std_Y  
-tGravityAcc_std_Z  
-tBodyAccJerk_std_X  
-tBodyAccJerk_std_Y  
-tBodyAccJerk_std_Z  
-tBodyGyro_std_X  
-tBodyGyro_std_Y  
-tBodyGyro_std_Z  
-tBodyGyroJerk_std_X  
-tBodyGyroJerk_std_Y  
-tBodyGyroJerk_std_Z  
-tBodyAccMag_std  
-tGravityAccMag_std  
-tBodyAccJerkMag_std  
-tBodyGyroMag_std  
-tBodyGyroJerkMag_std  
-fBodyAcc_std_X  
-fBodyAcc_std_Y  
-fBodyAcc_std_Z  
-fBodyAccJerk_std_X  
-fBodyAccJerk_std_Y  
-fBodyAccJerk_std_Z  
-fBodyGyro_std_X  
-fBodyGyro_std_Y  
-fBodyGyro_std_Z  
-fBodyAccMag_std  
-fBodyBodyAccJerkMag_std  
-fBodyBodyGyroMag_std  
-fBodyBodyGyroJerkMag_std  
 
 External Credits
 ----------------
+Full credits to the original dataset are included in the Codebook.md, however
+a subset of those credits are included here
 
-==================================================================
 Human Activity Recognition Using Smartphones Dataset
+----
 Version 1.0
-==================================================================
+----
 Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.
 Smartlab - Non Linear Complex Systems Laboratory
 DITEN - Università degli Studi di Genova.
@@ -153,7 +108,7 @@ www.smartlab.ws
 
 
 License:
-========
+----
 Use of this dataset in publications must be acknowledged by referencing the following publication [1] 
 
 [1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
